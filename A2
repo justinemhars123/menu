@@ -1,0 +1,58 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Activity2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int size = 0; // Current size of the array
+        int index = 0, element = 0, searchElement = 0, temp = 0;
+        System.out.println("\nMenu:");
+            System.out.println("Enter Size");
+      size = scanner.nextInt();
+      int [] array = new int[size];
+      System.out.println("Enter scores");
+      for(int i = 0; i < array.length; i++){
+         array[i] = scanner.nextInt();
+      } 
+
+        while (true) {
+            System.out.println("1. Insert an element");
+            System.out.println("2. Delete an element");
+            System.out.println("3. Search for an element");
+            System.out.println("4. Sort the array");
+            System.out.println("5. Print the array");
+            System.out.println("6. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            
+            Act2 act = new Act2(size);
+            switch (choice) {
+                case 1:
+                    act.Insert(array, size, element, index, scanner);
+                    size++;
+                    break;
+                case 2:
+                    act.Delete(array, size, index, scanner);
+                    size--;
+                    break;
+                case 3:
+                    act.Search(array, size, searchElement, scanner);
+                    break;
+                case 4:
+                    act.Sort(array, temp);
+                    break;
+                case 5:
+                    act.Print(array, size);
+                    break;
+                case 6:
+                    System.out.println("Exiting the program.");
+                    scanner.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+                    break;
+            }
+        }
+    }
+}
