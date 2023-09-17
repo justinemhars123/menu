@@ -1,0 +1,103 @@
+import java.util.*;
+public class Act2{
+   Scanner scanner = new Scanner(System.in);
+   
+//    int[] array = new int[];
+   int size = 0;
+   public Act2(int size)
+   {
+      int [] array = new int[size];
+   }
+   public void Populate(int [] array, int size, Scanner scanner)
+   {
+      array = new int[size];
+      System.out.println("Please enter the size of the array to manipulate: ");
+      size = scanner.nextInt();
+      
+      System.out.println("Enter scores");
+      for(int i = 0; i < array.length; i++){
+         array[i] = scanner.nextInt();
+         }
+   }
+   public void Insert(int [] array, int size, int element, int index, Scanner scanner)
+   {
+      if (size == array.length) {
+                        System.out.println("Array is full. Cannot insert more elements.");
+                    } else {
+                        System.out.print("Enter the element to insert: ");
+                        element = scanner.nextInt();
+                        System.out.print("Enter the index to insert at: ");
+                        index = scanner.nextInt();
+
+                        if (index < 0 || index > size) {
+                            System.out.println("Invalid index.");
+                        } else {
+                            // Shift elements to make space for the new element
+                            for (int i = size; i > index; i--) {
+                                array[i] = array[i - 1];
+                            }
+                            array[index] = element;
+                            
+                        }
+                    }
+
+   }
+   public void Delete(int [] array, int size, int index, Scanner scanner)
+   {
+      if (size == 0) {
+                        System.out.println("Array is empty. Nothing to delete.");
+                    } else {
+                        System.out.print("Enter the index to delete: ");
+                        index = scanner.nextInt();
+
+                        if (index < 0 || index >= size) {
+                            System.out.println("Invalid index.");
+                        } else {
+                            // Shift elements to remove the element
+                            for (int i = index; i < size - 1; i++) {
+                                array[i] = array[i + 1];
+                            }
+                        }
+                    }
+   }
+   public void Search(int [] array, int size, int searchElement, Scanner scanner)
+   {
+      System.out.print("Enter the element to search for: ");
+                    searchElement = scanner.nextInt();
+                    boolean found = false;
+
+                    for (int i = 0; i < size; i++) {
+                        if (array[i] == searchElement) {
+                            System.out.println("Element found at index " + i);
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found) {
+                        System.out.println("Element not found in the array.");
+                    }
+   }
+   public void Sort(int [] array, int temp)
+   {
+      for(int i = 0; i < array.length - 1; i++){
+         for(int a = 0; a < array.length - 1; a++){
+            if(array[a] > array[a + 1]){
+               temp = array[a];
+               array[a] = array[a + 1];
+               array[a + 1] = temp;
+            }
+         }
+      }
+                    System.out.println("Array sorted successfully.");
+   }
+   public void Print(int [] array, int size)
+   {
+      System.out.print("Array elements: ");
+                    for (int i = 0; i < size; i++) {
+                        System.out.print(array[i] + " ");
+                    }
+                    System.out.println(" ");
+   }
+   
+}
